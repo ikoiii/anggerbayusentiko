@@ -25,3 +25,7 @@
 📧 [Email](mailto:anggerbayusentiko@gmail.com)  
 🐙 [GitHub](https://github.com/ikoiii)  
 💬 [WhatsApp](https://api.whatsapp.com/send?phone=6285783471443)
+
+
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=ikoiii&show_icons=true&theme=tokyonight)
+
