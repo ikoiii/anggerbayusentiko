@@ -56,6 +56,9 @@
 ## 📊 GitHub Analytics
 
 <p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ikoiii&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</p>
+<p align="center">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=ikoiii&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" />
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ikoiii&layout=compact&theme=tokyonight&hide_border=true" />
 </p>
@@ -74,8 +77,3 @@
 💬 [WhatsApp](https://api.whatsapp.com/send?phone=6285783471443)  
 🎓 [Universitas Pamulang](https://unpam.ac.id/)  
 
----
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ikoiii&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
-</p>
