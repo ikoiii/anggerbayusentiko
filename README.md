@@ -1,19 +1,20 @@
-# 👋 Hi there, I'm **Angger Bayu Sentiko**!
-
-💡 I'm a passionate **Fullstack Developer** who loves creating modern, scalable web applications and exploring the world of **AI & Automation**.  
-🚀 I enjoy turning complex problems into elegant digital solutions.
-
----
-
-## 🧠 About Me
-
-🎯 Fullstack Developer | 🧩 AI Enthusiast / vibe coder | ⚙️ Problem Solver  
-💻 Focused on building **intelligent web applications** with seamless UI/UX and powerful backend logic.  
-
+<!-- Banner -->
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=28&pause=1000&color=36BCF7&center=true&vCenter=true&width=700&lines=👋+Hi%2C+I'm+Angger+Bayu+Sentiko!;💻+Fullstack+Developer+%26+AI+Enthusiast;🎓+Mahasiswa+Teknik+Informatika+-+Universitas+Pamulang" alt="Typing SVG" />
+</p>
 
 ---
 
-## 🛠️ Tech Stack
+## 👨‍💻 About Me
+
+💡 I'm a passionate **Fullstack Developer** who loves building **modern web applications** and exploring **AI & automation**.  
+🎓 Currently pursuing a **Bachelor's Degree in Informatics Engineering at Universitas Pamulang**.  
+⚙️ I enjoy turning real-world problems into efficient, scalable solutions using modern technology stacks.  
+🌱 Currently learning **Cloud Computing** and **Machine Learning integration**.
+
+---
+
+## 🧠 Tech Stack
 
 ### 🎨 Frontend
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -29,10 +30,18 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 ### 🧩 Database
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 ![Microsoft SQL Server](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
 
-### 🧰 Tools & Environment
+### 🧠 Machine Learning
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/Numpy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+
+---
+
+## 🧰 Tools & Environment
+
 ![VS Code](https://img.shields.io/badge/VS%20Code-0078D4?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 ![XAMPP](https://img.shields.io/badge/XAMPP-FB7A24?style=for-the-badge&logo=xampp&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
@@ -40,6 +49,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Microsoft SQL Server](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
 
 ---
 
@@ -53,18 +63,19 @@
 ---
 
 ## ⚡ Fun Quote
-> "Code is like humor — when you have to explain it, it’s bad." 😄
+> “Code is like humor — when you have to explain it, it’s bad.” 😄
 
 ---
 
 ## 🌐 Connect with Me
+
 📧 [Email](mailto:anggerbayusentiko@gmail.com)  
 🐙 [GitHub](https://github.com/ikoiii)  
 💬 [WhatsApp](https://api.whatsapp.com/send?phone=6285783471443)  
-🔗 [Portfolio (Coming Soon)](https://ikoiii.github.io)
+🎓 [Universitas Pamulang](https://unpam.ac.id/)  
 
 ---
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?color=36BCF7&size=22&center=true&vCenter=true&width=600&lines=Fullstack+Developer;AI+and+Machine+Learning+Enthusiast;Always+learning+new+things!">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ikoiii&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </p>
