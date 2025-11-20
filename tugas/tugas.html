@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Angger Bayu Sentiko - Daftar Tugas">
+    <title>Daftar Tugas - Angger Bayu Sentiko</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk tugas page */
+        .hero {
+            min-height: 50vh;
+            padding-top: 120px;
+        }
+
+        .tugas-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .tugas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tugas-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .tugas-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tugas-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .tugas-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .tugas-content {
+            padding: 2rem;
+        }
+
+        .tugas-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tugas-button {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tugas-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .tugas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="../index.html#portfolio" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Portfolio
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Daftar <span>Tugas</span></h1>
+                <p class="subtitle">Kumpulan Proyek Web Programming</p>
+                <p>Berikut adalah kumpulan tugas-tugas web programming yang telah saya buat sebagai bagian dari proses pembelajaran dan pengembangan skill dalam dunia web development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tugas Section -->
+    <section class="tugas-section">
+        <div class="container">
+            <div class="tugas-grid">
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <h3>Tugas 2</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Website informatif tentang film-film terkenal karya David Lean dengan struktur konten yang terorganisir dan rapi.</p>
+                        <a href="tugas2.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <h3>Tugas 3</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Halaman review produk teknologi USB Flash Drive Relion Outside Put dengan format penulisan yang profesional.</p>
+                        <a href="tugas3.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <h3>Tugas 4</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Pemutar video interaktif dengan kontrol custom untuk play/pause dan pengaturan ukuran video.</p>
+                        <a href="tugas4.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <h3>Tugas 5</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Halaman beranda dengan desain modern menampilkan visi, misi, dan tujuan platform informasi.</p>
+                        <a href="tugas5.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <h3>Tugas 6</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Implementasi struktur list multi-level untuk menampilkan komponen-komponen sistem komputer secara hierarkis.</p>
+                        <a href="tugas6.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <h3>Tugas 7</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Website pariwisata dengan layout tabel, galeri foto, dan informasi destinasi wisata Bali.</p>
+                        <a href="tugas7.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                        <h3>Tugas 8</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Formulir pendaftaran lengkap dengan berbagai jenis input: text, radio, checkbox, dan dropdown.</p>
+                        <a href="tugas8.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+
+                <div class="tugas-item">
+                    <div class="tugas-header" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                        <h3>Tugas 10</h3>
+                    </div>
+                    <div class="tugas-content">
+                        <p>Implementasi IFRAME untuk menampilkan website eksternal dalam halaman web dengan desain yang modern.</p>
+                        <a href="tugas10.html" class="tugas-button">Lihat Tugas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tugas-nav.js"></script>
+</body>
+</html>

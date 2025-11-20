@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tugas 7 - Wisata Indonesia oleh Angger Bayu Sentiko">
+    <title>Tugas 7 - Wisata Indonesia</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk wisata indonesia */
+        .hero {
+            min-height: 50vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tourism-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .tourism-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .tourism-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .tourism-header h2 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .tourism-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .tourism-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .destinations-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .destinations-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .destinations-list li:hover {
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.2), rgba(254, 214, 227, 0.2));
+            transform: translateX(5px);
+        }
+
+        .destinations-list li.active {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .destination-icon {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 3rem;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .destination-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .destination-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .destination-image {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .destination-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+        /* Gallery Sidebar */
+        .gallery-sidebar {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .gallery-sidebar h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem 0.5rem 0.5rem;
+            font-size: 0.8rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.1), rgba(254, 214, 227, 0.1));
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(168, 237, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h5 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 2px solid var(--border);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        @media (max-width: 1024px) {
+            .tourism-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar,
+            .gallery-sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .tourism-header h2 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .destination-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="tugas.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tugas
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tugas 7 - <span>Wisata Indonesia</span></h1>
+                <p class="subtitle">Pesona Alam dan Budaya Nusantara</p>
+                <p>Website pariwisata dengan layout tabel, galeri foto, dan informasi destinasi wisata Bali yang menampilkan keindahan Indonesia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tourism Section -->
+    <section class="tourism-section">
+        <div class="tourism-container">
+            <div class="tourism-header">
+                <h2>Wonderful Indonesia</h2>
+                <h3>Pesona Alam dan Budaya Nusantara</h3>
+            </div>
+
+            <div class="tourism-layout">
+                <!-- Left Sidebar - Destinations -->
+                <aside class="sidebar">
+                    <h4><i class="fas fa-map-marked-alt"></i> Top Destinasi</h4>
+                    <ul class="destinations-list">
+                        <li class="active" onclick="switchDestination('bali')">
+                            <i class="fas fa-umbrella-beach destination-icon"></i>
+                            <span>Bali</span>
+                        </li>
+                        <li onclick="switchDestination('yogya')">
+                            <i class="fas fa-monument destination-icon"></i>
+                            <span>Yogyakarta</span>
+                        </li>
+                        <li onclick="switchDestination('lombok')">
+                            <i class="fas fa-mountain destination-icon"></i>
+                            <span>Lombok</span>
+                        </li>
+                        <li onclick="switchDestination('rajaampat')">
+                            <i class="fas fa-water destination-icon"></i>
+                            <span>Raja Ampat</span>
+                        </li>
+                        <li onclick="switchDestination('danautoba')">
+                            <i class="fas fa-ship destination-icon"></i>
+                            <span>Danau Toba</span>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <div class="destination-header">
+                        <h2><i class="fas fa-umbrella-beach"></i> Wisata Bali</h2>
+                    </div>
+
+                    <img src="../assets/images/bali.jpg"
+                         alt="Tanah Lot Bali" class="destination-image"
+                         loading="lazy">
+
+                    <div class="destination-description">
+                        Bali merupakan salah satu pulau paling terkenal di dunia karena keindahan alam, budaya,
+                        dan keramahan penduduknya. Dikenal sebagai Pulau Dewata, Bali menawarkan berbagai
+                        destinasi menarik seperti Pantai Kuta, Ubud, Tanah Lot, dan Nusa Penida.
+                        Pengunjung dapat menikmati seni tari, kuliner khas, serta pemandangan matahari terbenam yang menakjubkan.
+                    </div>
+
+                    <!-- Info Cards -->
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <i class="fas fa-plane"></i>
+                            <h5>Akses Mudah</h5>
+                            <p>Bandara Internasional dengan banyak penerbangan</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-hotel"></i>
+                            <h5>Akomodasi</h5>
+                            <p>Berbagai pilihan hotel dan villa berkelas</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-utensils"></i>
+                            <h5>Kuliner</h5>
+                            <p>Masakan tradisional dan internasional</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-camera"></i>
+                            <h5>Spot Foto</h5>
+                            <p>Lokasi instagramable di seluruh pulau</p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Section -->
+                    <div style="margin-top: 3rem; text-align: center;">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--text-dark);">Teknologi yang Digunakan:</h4>
+                        <div>
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">Tables</span>
+                            <span class="tech-badge">Gallery</span>
+                            <span class="tech-badge">Responsive Design</span>
+                            <span class="tech-badge">Grid Layout</span>
+                            <span class="tech-badge">Sticky Position</span>
+                            <span class="tech-badge">Font Awesome</span>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Right Sidebar - Gallery -->
+                <aside class="gallery-sidebar">
+                    <h4><i class="fas fa-images"></i> Galeri</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item" onclick="openModal('../assets/images/rajaampat.jpg')">
+                            <img src="../assets/images/rajaampat.jpg"
+                                 alt="Raja Ampat Papua" loading="lazy">
+                            <div class="gallery-overlay">Raja Ampat</div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('../assets/images/bali.jpg')">
+                            <img src="../assets/images/bali.jpg"
+                                 alt="Pantai Bali" loading="lazy">
+                            <div class="gallery-overlay">Pantai Bali</div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('../assets/images/jogja.jpg')">
+                            <img src="../assets/images/jogja.jpg"
+                                 alt="Candi Yogyakarta" loading="lazy">
+                            <div class="gallery-overlay">Yogyakarta</div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('../assets/images/lombok.jpg')">
+                            <img src="../assets/images/lombok.jpg"
+                                 alt="Gunung Lombok" loading="lazy">
+                            <div class="gallery-overlay">Lombok</div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('../assets/images/danautoba.jpg')">
+                            <img src="../assets/images/danautoba.jpg"
+                                 alt="Danau Toba" loading="lazy">
+                            <div class="gallery-overlay">Danau Toba</div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('../assets/images/profile.jpg')">
+                            <img src="../assets/images/profile.jpg"
+                                 alt="Profile Image" loading="lazy">
+                            <div class="gallery-overlay">Profile</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <script src="../js/tugas-nav.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/destination.js"></script>
+</body>
+</html>

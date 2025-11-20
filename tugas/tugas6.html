@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tugas 6 - Multi-Level List oleh Angger Bayu Sentiko">
+    <title>Tugas 6 - Multi-Level List</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk multi-level list */
+        .hero {
+            min-height: 40vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .list-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .list-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .list-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .list-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .list-header h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .list-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .list-content {
+            position: relative;
+        }
+
+        .list-content ol {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: main-counter;
+        }
+
+        .list-content > ol > li {
+            counter-increment: main-counter;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .list-content > ol > li::before {
+            content: counter(main-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .main-category {
+            background: linear-gradient(135deg, rgba(48, 207, 208, 0.1), rgba(51, 8, 103, 0.1));
+            border-left: 4px solid #30cfd0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .main-category h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-category .category-icon {
+            color: #30cfd0;
+            font-size: 1.2rem;
+        }
+
+        .main-category ol {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .main-category > ol > li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .main-category > ol > li::before {
+            content: attr(data-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #30cfd0;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .sub-category {
+            background-color: rgba(48, 207, 208, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 3px solid rgba(48, 207, 208, 0.5);
+        }
+
+        .sub-category h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-category .sub-icon {
+            color: #330867;
+            font-size: 1rem;
+        }
+
+        .sub-category ul, .sub-category ol {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sub-category ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .sub-category ul li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #330867;
+            font-size: 0.7rem;
+            top: 0.6rem;
+        }
+
+        .sub-category ol li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .sub-category ol li::before {
+            content: counter(list-item, lower-roman) ".";
+            position: absolute;
+            left: 0;
+            color: #330867;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 2px solid var(--border);
+        }
+
+        .list-info {
+            background: linear-gradient(135deg, rgba(48, 207, 208, 0.1), rgba(51, 8, 103, 0.1));
+            border-left: 4px solid #30cfd0;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .list-info p {
+            margin: 0.5rem 0;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(48, 207, 208, 0.1), rgba(51, 8, 103, 0.1));
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(48, 207, 208, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #30cfd0;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .list-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .list-header h2 {
+                font-size: 2rem;
+            }
+
+            .main-category {
+                padding: 1rem;
+            }
+
+            .main-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .sub-category {
+                padding: 0.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="tugas.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tugas
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tugas 6 - <span>Multi-Level List</span></h1>
+                <p class="subtitle">Struktur Hirarkis Komponen Sistem Komputer</p>
+                <p>Implementasi struktur list multi-level untuk menampilkan komponen-komponen sistem komputer secara hierarkis dan terorganisir.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- List Section -->
+    <section class="list-section">
+        <div class="list-container">
+            <div class="list-card">
+                <div class="list-header">
+                    <h2><i class="fas fa-sitemap"></i> Komponen Sistem Komputer</h2>
+                    <p>Struktur lengkap komponen-komponen yang membangun sistem komputer modern</p>
+                </div>
+
+                <div class="list-info">
+                    <p><i class="fas fa-info-circle"></i> Berikut adalah hierarki lengkap dari komponen-komponen utama dalam sistem komputer</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Kategori Utama</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Sub-Kategori</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Komponen Spesifik</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Tingkat Hirarki</div>
+                    </div>
+                </div>
+
+                <div class="list-content">
+                    <ol>
+                        <!-- Hardware Section -->
+                        <li>
+                            <div class="main-category">
+                                <h3><i class="fas fa-microchip category-icon"></i> Hardware</h3>
+                                <p>Komponen fisik yang dapat dilihat dan disentuh dalam sistem komputer</p>
+                                <ol>
+                                    <li data-counter="A">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-keyboard sub-icon"></i> Input Device</h4>
+                                            <p>Perangkat untuk memasukkan data ke dalam sistem</p>
+                                            <ul>
+                                                <li>Mouse</li>
+                                                <li>Keyboard</li>
+                                                <li>Joystick</li>
+                                                <li>Scanner</li>
+                                                <li>Webcam</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li data-counter="B">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-desktop sub-icon"></i> Output Device</h4>
+                                            <p>Perangkat untuk menampilkan hasil pengolahan data</p>
+                                            <ol>
+                                                <li>Monitor</li>
+                                                <li>Printer</li>
+                                                <li>Speaker</li>
+                                                <li>Projector</li>
+                                            </ol>
+                                        </div>
+                                    </li>
+                                    <li data-counter="C">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-server sub-icon"></i> Process</h4>
+                                            <p>Unit pemrosesan utama sistem komputer</p>
+                                            <ul>
+                                                <li>Central Processing Unit (CPU)</li>
+                                                <li>Graphics Processing Unit (GPU)</li>
+                                                <li>Memory Controller</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+
+                        <!-- Software Section -->
+                        <li>
+                            <div class="main-category">
+                                <h3><i class="fas fa-code category-icon"></i> Software</h3>
+                                <p>Program-program yang menjalankan fungsi tertentu dalam sistem</p>
+                                <ol>
+                                    <li data-counter="a">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-windows sub-icon"></i> Operating System</h4>
+                                            <p>Perangkat lunak dasar yang mengatur hardware</p>
+                                            <ul>
+                                                <li>Windows</li>
+                                                <li>Unix</li>
+                                                <li>Linux</li>
+                                                <li>macOS</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li data-counter="b">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-laptop-code sub-icon"></i> Programming Language</h4>
+                                            <p>Bahasa untuk membuat aplikasi dan program</p>
+                                            <ul>
+                                                <li>Delphi</li>
+                                                <li>Cobol</li>
+                                                <li>RPG</li>
+                                                <li>Python</li>
+                                                <li>JavaScript</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li data-counter="c">
+                                        <div class="sub-category">
+                                            <h4><i class="fas fa-tools sub-icon"></i> Utility Program</h4>
+                                            <p>Program pendukung untuk maintenance sistem</p>
+                                            <ul>
+                                                <li>Antivirus</li>
+                                                <li>Disk Cleanup</li>
+                                                <li>System Monitor</li>
+                                                <li>File Manager</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center;">
+                    <h4 style="margin-bottom: 1.5rem; color: var(--text-dark);">Teknologi yang Digunakan:</h4>
+                    <div>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">Lists</span>
+                        <span class="tech-badge">Hierarchical Structure</span>
+                        <span class="tech-badge">CSS Counters</span>
+                        <span class="tech-badge">Responsive Design</span>
+                        <span class="tech-badge">Font Awesome</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tugas-nav.js"></script>
+    <script src="js/list-manager.js"></script>
+</body>
+</html>

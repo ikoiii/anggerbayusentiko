@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tugas 5 - Homepage Design oleh Angger Bayu Sentiko">
+    <title>Tugas 5 - Homepage Design</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk homepage design */
+        .hero {
+            min-height: 50vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .values-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .values-intro h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .values-intro p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-features {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .value-features li {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .value-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 2px solid var(--border);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.1), rgba(254, 225, 64, 0.1));
+            border-radius: 16px;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .value-card {
+                padding: 2rem;
+            }
+
+            .values-intro h2 {
+                font-size: 2rem;
+            }
+
+            .value-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="tugas.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tugas
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Selamat Datang di <span>TechHub</span></h1>
+                <p class="subtitle">Platform Digital Terpercaya untuk Semua Kebutuhan Teknologi</p>
+                <p>Kami menyediakan solusi teknologi terkini, informasi terpercaya, dan layanan digital yang inovatif untuk mendukung kemajuan bisnis dan personal Anda.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn">Lihat Layanan</a>
+                    <a href="#contact" class="btn-outline">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="values-section" id="about">
+        <div class="values-container">
+            <div class="values-intro">
+                <h2><i class="fas fa-home"></i> Tentang TechHub</h2>
+                <p>Platform teknologi terdepan yang menghadirkan solusi digital untuk masa depan</p>
+            </div>
+
+            <div class="values-grid">
+                <!-- Fitur Card -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Pengembangan website modern dengan teknologi terkini untuk meningkatkan kehadiran digital bisnis Anda.</p>
+                    <ul class="value-features">
+                        <li>Responsive Design</li>
+                        <li>Modern Framework</li>
+                        <li>SEO Optimization</li>
+                        <li>Fast Loading</li>
+                    </ul>
+                </div>
+
+                <!-- Fitur Card -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Solutions</h3>
+                    <p>Aplikasi mobile yang user-friendly untuk iOS dan Android dengan performa optimal dan fitur lengkap.</p>
+                    <ul class="value-features">
+                        <li>Cross-platform Development</li>
+                        <li>Native Performance</li>
+                        <li>Intuitive UI/UX</li>
+                        <li>Regular Updates</li>
+                    </ul>
+                </div>
+
+                <!-- Fitur Card -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Services</h3>
+                    <p>Infrastruktur cloud yang aman dan scalable untuk mendukung pertumbuhan bisnis Anda tanpa batas.</p>
+                    <ul class="value-features">
+                        <li>Secure Infrastructure</li>
+                        <li>Auto Scaling</li>
+                        <li>24/7 Monitoring</li>
+                        <li>Data Backup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="values-section" id="services" style="background-color: var(--white);">
+        <div class="values-container">
+            <div class="values-intro">
+                <h2><i class="fas fa-cogs"></i> Layanan Kami</h2>
+                <p>Berbagai layanan profesional untuk memenuhi kebutuhan digital Anda</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Strategi pemasaran digital komprehensif untuk meningkatkan visibilitas brand dan penjualan online.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Perlindungan data dan sistem dari ancaman cyber dengan solusi keamanan terkini.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Tech Support</h3>
+                    <p>Layanan dukungan teknis 24/7 untuk memastikan sistem berjalan optimal tanpa hambatan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="values-section" id="contact" style="background-color: var(--white);">
+        <div class="values-container">
+            <div class="values-intro">
+                <h2><i class="fas fa-envelope"></i> Hubungi Kami</h2>
+                <p>Siap memulai proyek teknologi impian Anda? Tim kami siap membantu!</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Alamat</h3>
+                    <p>Jakarta, Indonesia</p>
+                    <p>Jl. Sudirman No. 123<br>Gedung TechHub Lt. 15</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Telepon</h3>
+                    <p>+62 21 1234 5678</p>
+                    <p>Senin - Jumat: 09:00 - 18:00<br>Sabtu: 09:00 - 15:00</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>hello@techhub.com</p>
+                    <p>support@techhub.com<br>info@techhub.com</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
+                <p>Hubungi kami untuk konsultasi gratis tentang kebutuhan teknologi Anda</p>
+                <div>
+                    <a href="mailto:hello@techhub.com" class="btn">
+                        <i class="fas fa-envelope"></i> Kirim Email
+                    </a>
+                    <a href="tel:+622112345678" class="btn-outline">
+                        <i class="fas fa-phone"></i> Telepon Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="cta-section">
+                <h3><i class="fas fa-rocket"></i> Siap Memulai Proyek Anda?</h3>
+                <p>Hubungi kami hari ini dan dapatkan solusi teknologi terbaik untuk bisnis Anda</p>
+                <div>
+                    <a href="mailto:hello@techhub.com" class="btn">
+                        <i class="fas fa-envelope"></i> Konsultasi Gratis
+                    </a>
+                    <a href="#contact" class="btn-outline">
+                        <i class="fas fa-phone"></i> Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tugas-nav.js"></script>
+    <script>
+        // Smooth scrolling for internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 100;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all value cards
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.value-icon').style.transform = 'scale(1.1) rotate(5deg)';
+                this.querySelector('.value-icon').style.transition = 'transform 0.3s ease';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.value-icon').style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>

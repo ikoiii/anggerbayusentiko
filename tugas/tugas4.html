@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tugas 4 - Interactive Video Player oleh Angger Bayu Sentiko">
+    <title>Tugas 4 - Pemutar Video Interaktif</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk tugas content */
+        .hero {
+            min-height: 40vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .video-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .video-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .video-card h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-controls {
+            margin: 2rem 0;
+        }
+
+        .control-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            margin: 0.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .control-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-wrapper {
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #000;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 2px solid var(--border);
+        }
+
+        .video-info {
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.1), rgba(56, 249, 215, 0.1));
+            border-left: 4px solid #43e97b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .video-info p {
+            margin: 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .video-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .control-btn {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                margin: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="tugas.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tugas
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tugas 4 - <span>Pemutar Video Interaktif</span></h1>
+                <p class="subtitle">Interactive HTML5 Video Player</p>
+                <p>Pemutar video interaktif dengan kontrol custom untuk play/pause dan pengaturan ukuran video menggunakan JavaScript.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <div class="video-card">
+                <h2><i class="fas fa-play-circle"></i> Pemutar Video Interaktif</h2>
+                <p>Klik tombol di bawah untuk mengontrol video.</p>
+
+                <div class="video-controls">
+                    <button class="control-btn" onclick="tekanPause()">
+                        <i class="fas fa-play"></i> Play/Pause
+                    </button>
+                    <button class="control-btn" onclick="menjadiBig()">
+                        <i class="fas fa-expand"></i> Big
+                    </button>
+                    <button class="control-btn" onclick="menjadiSmall()">
+                        <i class="fas fa-compress"></i> Small
+                    </button>
+                    <button class="control-btn" onclick="menjadiNormal()">
+                        <i class="fas fa-arrows-alt"></i> Normal
+                    </button>
+                </div>
+
+                <div class="video-wrapper">
+                    <video id="videoku" width="600" controls>
+                        <source src="../assets/video/pagi.mp4" type="video/mp4">
+                        Browser anda tidak support video HTML 5.
+                        <a href="../assets/video/pagi.mp4" download>Download video</a>
+                    </video>
+                </div>
+
+                <div class="video-info">
+                    <p><i class="fas fa-info-circle"></i> <strong>Informasi Video:</strong></p>
+                    <p>• Format video: MP4</p>
+                    <p>• Kontrol custom dengan JavaScript</p>
+                    <p>• Ukuran dapat disesuaikan (Small/Normal/Big)</p>
+                    <p>• Kontrol Play/Pause yang tersinkronisasi dengan kontrol default HTML5</p>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h4 style="margin-bottom: 1rem;">Teknologi yang Digunakan:</h4>
+                    <div>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Video API</span>
+                        <span class="tech-badge">DOM Manipulation</span>
+                        <span class="tech-badge">Event Handling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tugas-nav.js"></script>
+    <script src="js/video-player.js"></script>
+</body>
+</html>

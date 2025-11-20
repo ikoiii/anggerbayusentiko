@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tugas 10 - IFRAME Implementation oleh Angger Bayu Sentiko">
+    <title>Tugas 10 - IFRAME Implementation</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles untuk IFRAME implementation */
+        .hero {
+            min-height: 40vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .iframe-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .iframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .iframe-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .iframe-card h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .iframe-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .iframe-wrapper {
+            margin: 2rem auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+            background: #f8f9fa;
+        }
+
+        .iframe-controls {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .control-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .control-btn.secondary {
+            background-color: var(--text-light);
+        }
+
+        .control-btn.secondary:hover {
+            background-color: var(--text-dark);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 2px solid var(--border);
+        }
+
+        .iframe-info {
+            background: linear-gradient(135deg, rgba(255, 236, 210, 0.1), rgba(252, 182, 159, 0.1));
+            border-left: 4px solid #ffecd2;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .iframe-info p {
+            margin: 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        .iframe-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background-color: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            margin: 0.5rem 0 0 0;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .iframe-card {
+                padding: 2rem 1.5rem;
+            }
+
+            iframe {
+                height: 400px;
+            }
+
+            .iframe-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
+            }
+
+            .iframe-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            iframe {
+                height: 300px;
+            }
+
+            .iframe-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#portfolio" class="nav-logo">Angger</a>
+            <div class="nav-menu">
+                <a href="../index.html#home" class="nav-link">Beranda</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="tugas.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tugas
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tugas 10 - <span>IFRAME Implementation</span></h1>
+                <p class="subtitle">Embedding External Websites</p>
+                <p>Implementasi IFRAME untuk menampilkan website eksternal dalam halaman web dengan desain yang modern dan interaktif.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IFRAME Section -->
+    <section class="iframe-section">
+        <div class="iframe-container">
+            <div class="iframe-card">
+                <h2><i class="fas fa-window-restore"></i> Penggunaan IFRAME</h2>
+                <p class="iframe-description">
+                    Berikut contoh penggunaan IFRAME untuk menampilkan website lain di dalam halaman ini.
+                    IFRAME memungkinkan kita untuk mengembed konten eksternal tanpa meninggalkan halaman utama.
+                </p>
+
+                <div class="iframe-info">
+                    <p><i class="fas fa-info-circle"></i> <strong>Informasi IFRAME:</strong></p>
+                    <p>• Website yang ditampilkan: https://ikoiii.github.io/porto_html/</p>
+                    <p>• Teknologi: HTML5 IFRAME element</p>
+                    <p>• Keamanan: Menggunakan sandbox attributes untuk keamanan tambahan</p>
+                    <p>• Responsive: Otomatis menyesuaikan ukuran layar</p>
+                </div>
+
+                <div class="iframe-controls">
+                    <button class="control-btn" onclick="reloadIframe()">
+                        <i class="fas fa-sync-alt"></i> Reload
+                    </button>
+                    <button class="control-btn secondary" onclick="toggleIframe()">
+                        <i class="fas fa-eye"></i> Toggle
+                    </button>
+                    <button class="control-btn secondary" onclick="goFullscreen()">
+                        <i class="fas fa-expand"></i> Fullscreen
+                    </button>
+                </div>
+
+                <div class="iframe-wrapper">
+                    <iframe
+                        id="mainIframe"
+                        src="https://ikoiii.github.io/porto_html/"
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                        loading="lazy"
+                        title="External Website Preview">
+                        <p>Your browser does not support iframes.
+                        <a href="https://ikoiii.github.io/porto_html/" target="_blank">Click here to view the website</a></p>
+                    </iframe>
+                </div>
+
+                <div class="iframe-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-globe"></i>
+                        <p>External Website</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-code"></i>
+                        <p>HTML5 IFRAME</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Sandbox Mode</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>Responsive</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h4 style="margin-bottom: 1rem;">Teknologi yang Digunakan:</h4>
+                    <div>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">IFRAME</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Sandbox Security</span>
+                        <span class="tech-badge">Responsive Design</span>
+                        <span class="tech-badge">Web Standards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Angger Bayu Sentiko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tugas-nav.js"></script>
+    <script src="js/iframe-loader.js"></script>
+</body>
+</html>
